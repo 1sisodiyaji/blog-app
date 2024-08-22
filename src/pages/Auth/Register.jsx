@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useGoogleLogin } from "@react-oauth/google";
@@ -9,17 +9,12 @@ import Cookies from 'js-cookie';
 
 const Register = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [verify, setVerify] = useState(false);
-  const [token ,setToken] = useState(null);
+  const [loading, setLoading] = useState(false); 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-  });
-  const [verificationCode, setVerificationCode] = useState(['', '', '', '', '', '']);
-  const inputRefs = useRef([]); 
-
+  }); 
 
   // Toggle password visibility
   const togglePasswordVisibility = () => {
@@ -80,10 +75,10 @@ const Register = () => {
       const response = await axios.post(`${config.BASE_URL}/user/register`, formDataEncoded);
 
       if (response.status === 200) {
-        toast.success("Please Verify Your Account !", { theme: "dark" }); 
+        toast.success("Welcome to blog-app !", { theme: "dark" }); 
         setLoading(false);
-        setToken(response.data.token);
-        setVerify(true);
+        Cookies.set("Codesaarthi-token",  response.data.token, { expires: 30 });
+       window.location.href= "/";
       } else {
         toast.error("Failed to register", { theme: "dark" });
         setLoading(false);
@@ -128,7 +123,7 @@ const Register = () => {
         if (saveUserDataResponse.data.status === "success") { 
           Cookies.set("Codesaarthi-token", saveUserDataResponse.data.token, { expires: 30 });
           setLoading(false);
-         window.location.href = "/blog";
+         window.location.href = "/";
         } else {
           toast.error("Error saving user data", { theme: "dark" });
           console.log(saveUserDataResponse.data.message);
@@ -146,77 +141,7 @@ const Register = () => {
       setLoading(false);
     },
   });
-
-  // Function to handle change in each input field
-  const handleInputChange2 = (index, event) => {
-    const value = event.target.value;
-    // Ensure only numeric values and maximum of 1 digit
-    if (/^\d*$/.test(value) && value.length <= 1) {
-      const newVerificationCode = [...verificationCode];
-      newVerificationCode[index] = value;
-      setVerificationCode(newVerificationCode);
-
-      // Move focus to next input field if value is entered
-      if (value.length === 1 && index < 5) {
-        inputRefs.current[index + 1].focus();
-      }
-    }
-  };
-
-  // Function to handle backspace/delete functionality
-  const handleBackspace = (index, event) => {
-    if (event.key === 'Backspace' && index > 0) {
-      const newVerificationCode = [...verificationCode];
-      newVerificationCode[index - 1] = '';
-      setVerificationCode(newVerificationCode);
-      inputRefs.current[index - 1].focus();
-    }
-  };
-
-  const verifyUser = async () => {
-    try {
-      const { email } = formData; 
-      const code = verificationCode.join('');  
-        
-    const response = await fetch(`${config.BASE_URL}/api/verify-user`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ code, email })
-    });
-      
-      if (response.status === 200) { 
-        toast.success("User Verified Welcome to Codesaarthi !", { theme: "dark" });  
-        Cookies.set("Codesaarthi-token",token, { expires: 30 });
-        setLoading(false);
-        window.location.href = "/blog";
-      } else {
-        console.error("Verification failed");
-        toast.error("failed to Verify try again after sometime ..", { theme: "dark" }); 
-       
-      }
-    } catch (error) {
-      toast.error(error, { theme: "dark" }); 
-      console.error("Error verifying user:", error);
-    }
-  };
-
-  const inputs = verificationCode.map((value, index) => (
-
-    <input
-      key={index}
-      type="text"
-      className="max-w-16 p-4  rounded-3 "
-      style={{ color: "#79b4e2", border: "1px solid #79b4e2", backgroundColor: "black" }}
-      maxLength={1}
-      value={value}
-      onChange={(e) => handleInputChange2(index, e)}
-      onKeyDown={(e) => handleBackspace(index, e)}
-      ref={(el) => inputRefs.current[index] = el}
-    />
-
-  ));
+ 
 
   return (
     <>
@@ -256,40 +181,11 @@ const Register = () => {
       sizes="32x32"
     />
   </Helmet>
-      {verify ?
-        <>
-         <div className="flex-row  min-h-screen bg-slate-400 dark:bg-gray-950 text-black dark:text-white">
-            <div className="flex justify-center items-center">
-              <div className="text-center">
-                <div>
-                  <img
-                    src="https://res.cloudinary.com/ducw7orvn/image/upload/v1720990203/logo_zdeshk.png"
-                    width={95}
-                    alt="codesaarthi"
-                    className="mx-auto "
-                  />
-                  <h4 className='text-warning mb-3'>Hey, Welcome to the verification Page</h4>
-                  <div className="flex gap-4">
-                    {inputs}
-                  </div>
-                  <button onClick={verifyUser} className='btn btn-block my-3'>Verify</button>
-                </div>
-              </div>
-              <div>
-                <img src="https://res.cloudinary.com/ducw7orvn/image/upload/v1720990074/login1_h8i72j.png" 
-                className=' w-full shadow-lg' alt="login" loading='lazy' />
-              </div>
-            </div>
-
-          </div>
-          
-        </>
-        :
-        <>
+       
          <div  className="flex justify-around items-center min-h-screen bg-slate-400 dark:bg-gray-950 text-black dark:text-white" 
           >
             <div className="flex justify-between items-center p-2">
-              <div className="w-[420px]" >
+              <div className="md:w-[420px]" >
                 <form onSubmit={handleSubmit}>
                   <div>
                     <img 
@@ -312,7 +208,7 @@ const Register = () => {
                           name="name"
                           required
                           value={formData.name}
-                          className="w-full rounded-8 p-2"
+                          className="w-full rounded-lg p-2 bg-slate-100 dark:bg-gray-700"
                           placeholder="Your Name"
                           onChange={handleInputChange}
                         />
@@ -333,7 +229,7 @@ const Register = () => {
                         name="email"
                         required
                         value={formData.email}
-                        className="w-full rounded-8 p-2"
+                        className="w-full rounded-lg p-2 bg-slate-100 dark:bg-gray-700"
                         onChange={handleInputChange}
                         placeholder="Email"
                       />
@@ -353,7 +249,7 @@ const Register = () => {
                         id="password"
                         name="password"
                         value={formData.password}
-                        className="w-full rounded-8 p-2"
+                        className="w-full rounded-lg p-2 bg-slate-100 dark:bg-gray-700"
                         onChange={handleInputChange}
                         placeholder="Password"
                         required
@@ -451,13 +347,7 @@ const Register = () => {
               />
             </div>
           </div>
-
-        </>
-      }
-
-
-
-
+ 
     </>
   );
 };

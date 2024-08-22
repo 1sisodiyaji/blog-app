@@ -12,7 +12,7 @@ const FormattedDate = ({ date }) => {
   const month = d.toLocaleString('default', { month: 'long' });
  
   return (
-    <span>
+    <span className='md:text-sm text-xs'>
       {`${hours}:${minutes} ${ampm} . ${day} ${month}`}
     </span>
   );

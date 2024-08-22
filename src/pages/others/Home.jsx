@@ -79,7 +79,7 @@ const Home = () => {
     <link rel="icon" type="image/png" href="https://blog-app-alpha-livid.vercel.app/favicon.ico" sizes="32x32" />
   </Helmet>
   <div className='bg-slate-400 dark:bg-gray-950 text-black dark:text-white min-h-screen'>
-  <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+  <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
     {Blogs.length > 0 ? (
       Blogs.map((blog, index) => (
         <div
@@ -101,10 +101,10 @@ const Home = () => {
             <p className='text-xs'><TruncateText text={blog.description} maxLength={200}/> </p>
 
             <div className='flex justify-between items-center'>
-            <div>
-            <p className="space-x-3">
+            <div >
+            <p className="flex  space-y-1 flex-wrap space-x-1 md:w-2/3  w-44 ">
               Tags: {blog.tags.map((tag, index) => (
-                <span key={index} className="px-4 py-2 bg-green-400 rounded-lg">
+                <span key={index} className="md:px-3 md:py-1 p-1 bg-green-400 rounded-lg md:justify-center">
                   {tag}
                 </span>
               ))} 
@@ -114,7 +114,7 @@ const Home = () => {
             
             </div>
             <div className='flex justify-between align-baseline'>
-            <Link to = {`/profile/${blog.idAuthor.slug}`}><p className="font-bold">Author: {blog.idAuthor.name && blog.idAuthor.name}</p></Link>
+            <Link to = {`/profile/${blog.idAuthor.slug}`}><p className="font-bold md:text-sm text-xs">Author: {blog.idAuthor.name && blog.idAuthor.name}</p></Link>
          
             <FormattedDate date={blog.date}/>
             </div> 

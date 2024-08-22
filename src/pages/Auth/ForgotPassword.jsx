@@ -69,7 +69,7 @@ const ForgotPassword = () => {
     formDataEncoded.append("email", formData.email);
     try {
       const response = await axios.post(`${config.BASE_URL}/user/sendemail`, formDataEncoded);
-      if (response.data.status === 'success') {
+      if (response.status === 200) {
         setLoading(false);
         setShowOtp(true);
         setShowEmails(false);

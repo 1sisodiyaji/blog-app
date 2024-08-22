@@ -61,13 +61,13 @@ const Login = () => {
         formDataEncoded
       );
 
-      if (response.data.status === "success") {
+      if (response.status === 200) {
         toast.success("Welcome to Codesaarthi !", { theme: "dark" });
         setLoading(false);
-        Cookies.set("NotesSaverToken", response.data.token, {
+        Cookies.set("Codesaarthi-token", response.data.token, {
           expires: 30,
         });
-        window.location.href = "/blog";
+        window.location.href = "/";
       } else {
         toast.error(response.data.message, { theme: "dark" });
         setLoading(false);
@@ -76,9 +76,7 @@ const Login = () => {
       if (error.response && error.response.status === 400) {
         toast.error("User with this email already exists", { theme: "dark" });
       } else {
-        toast.error(error.data.message, {
-          theme: "dark",
-        });
+        toast.error("failed to login");
       }
       setLoading(false);
     }
@@ -114,11 +112,11 @@ const Login = () => {
         );
 
         if (saveUserDataResponse.data.status === "success") {
-          Cookies.set("NotesSaverToken", saveUserDataResponse.data.token, {
+          Cookies.set("Codesaarthi-token", saveUserDataResponse.data.token, {
             expires: 30,
           });
           setLoading(false);
-          window.location.href = "/blog";
+          window.location.href = "/";
         } else {
           toast.error("Error saving user data", { theme: "dark" });
           console.log(saveUserDataResponse.data.message);
@@ -184,7 +182,7 @@ const Login = () => {
 
       <div className="min-h-screen bg-slate-400 dark:bg-gray-950 flex justify-between items-center">
           <div className="flex justify-center  items-center  pb-12 flex-1"> 
-                <div className=" space-y-4" style={{ width: "420px" }}>
+                <div className=" space-y-4">
                   <form onSubmit={handleSubmit}>
                     <div className="text-center">
                       <img

@@ -50,7 +50,7 @@ const ProfilePage = () => {
 
     fetchProfileData();
     fetchUserBlogs();
-  }, [editing]);
+  }, [editing , token]);
 
   const handleUpdateProfile = async () => {
     try {
@@ -198,9 +198,9 @@ const ProfilePage = () => {
                     <Link to={`/profile/${blog.idAuthor.slug}`}> <p className="font-bold">Author: {blog.idAuthor.name && blog.idAuthor.name}</p></Link>
                     <div className='flex justify-between items-center my-2'>
                       <div>
-                        <p className="space-x-3">
+                        <p className="flex  space-y-1 flex-wrap space-x-1 md:w-2/3  w-44 ">
                           Tags: {blog.tags.map((tag, index) => (
-                            <span key={index} className="px-4 py-2 bg-green-400 rounded-lg">
+                            <span key={index} className="md:px-3 md:py-1 p-1 bg-green-400 rounded-lg md:justify-center">
                               {tag}
                             </span>
                           ))}

@@ -30,7 +30,8 @@ const Share = ({url}) => {
   return (
     <> 
       <details className="dropdown  dropdown-end">
-        <summary className="btn m-1">Share <i className="fi fi-sr-share"></i> </summary>
+        <summary className="btn  inline pt-3 w-28">
+          Share <i className="fi fi-sr-share"></i> </summary>
         <ul className="menu dropdown-content bg-slate-200 dark:bg-gray-700 rounded-box z-[1] w-52 p-2 shadow-lg space-y-2">
           <button onClick={copyLink} className="share-button">
             Copy Link
