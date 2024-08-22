@@ -8,6 +8,7 @@ import { toast, Toaster } from 'react-hot-toast';
 import CreateBlog from '../../components/CreateBlogs';
 import UpdateBlog from '../../components/UpdateBlog';
 import FormattedDate from '../../helpers/FormateDate';
+import { Helmet } from 'react-helmet';
 
 const ProfilePage = () => {
   const [profile, setProfile] = useState({});
@@ -116,6 +117,28 @@ const ProfilePage = () => {
   return (
     <>
       <Toaster />
+      <Helmet>
+        <title>Profile | Blog | codesaarthi</title>
+        <meta name="description" content="View and manage your user profile on Blog | codesaarthi. Update personal information, view your posts, and manage settings." />
+        <meta name="keywords" content="user profile, account settings, Blog | codesaarthi" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://blog-app-alpha-livid.vercel.app/profile" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:title" content="User Profile | Blog | codesaarthi" />
+        <meta property="og:description" content="View and manage your user profile on Blog | codesaarthi. Update personal information, view your posts, and manage settings." />
+        <meta property="og:image" content="https://blog-app-alpha-livid.vercel.app/android-chrome-512x512.png" />
+        <meta property="og:url" content="https://blog-app-alpha-livid.vercel.app/profile" />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content="User Profile | Blog | codesaarthi" />
+        <meta property="twitter:description" content="View and manage your user profile on Blog | codesaarthi. Update personal information, view your posts, and manage settings." />
+        <meta property="twitter:image" content="https://blog-app-alpha-livid.vercel.app/android-chrome-512x512.png" />
+        
+        <link rel="icon" type="image/png" href="https://blog-app-alpha-livid.vercel.app/favicon.ico" sizes="32x32" />
+      </Helmet>
       <div className="min-h-screen bg-slate-400 dark:bg-gray-950 text-black dark:text-white flex flex-col justify-center items-center py-8 px-1">
 
         {editing ?
@@ -195,7 +218,7 @@ const ProfilePage = () => {
                           <UpdateBlog id={blog._id} />
                           <div className='flex justify-between items-stretch '>
                             <button className="btn-cancel btn bg-green-100 text-black " onClick={() => document.getElementById(`update${blog._id}`).close()}>Cancel</button>
-                            <button className="btn-confirm btn bg-red-400 text-white " onClick={() => handleUpdateBlog(blog._id)}>Update <i className="fi fi-sr-trash-xmark"></i> </button>
+                            <button className="btn-confirm btn bg-orange-400 text-white " onClick={() => handleUpdateBlog(blog._id)}>Update <i className="fi fi-sr-trash-xmark"></i> </button>
                           </div>
                         </div>
                         <form method="dialog" className="modal-backdrop">
@@ -210,7 +233,7 @@ const ProfilePage = () => {
                         <div className="modal-box p-4 space-y-6">
                           <h3 className="font-bold text-lg text-white">Are you sure you want to delete This Post!</h3>
                           <div className='flex justify-between items-stretch '>
-                            <button className="btn-cancel btn bg-green-100 text-black " onClick={() => document.getElementById('deleteBlog').close()}>Cancel</button>
+                            <button className="btn-cancel btn bg-green-100 text-black " onClick={() => document.getElementById(`${blog._id}`).close()}>Cancel</button>
                             <button className="btn-confirm btn bg-red-400 text-white " onClick={() => handleDeleteBlog(blog._id)}>Delete <i className="fi fi-sr-trash-xmark"></i> </button>
                           </div>
                         </div>

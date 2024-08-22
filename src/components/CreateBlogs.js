@@ -77,6 +77,7 @@ const CreateBlog = () => {
         setImage(null);
         setTags([]);
       }
+      document.getElementById('createBlog').close()
     } catch (error) {
       toast.error('Failed to create blog.');
       console.error(error);

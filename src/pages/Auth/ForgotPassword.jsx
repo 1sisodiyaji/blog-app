@@ -147,19 +147,19 @@ const ForgotPassword = () => {
   return (
     <>
      <Helmet>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="keywords" content="Recover password, forgot password, Notes Saver" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://noteswebapp-rust.vercel.app/recover-password" />
-  <meta name="description" content="Page to recover your password for Notes Saver. Follow simple steps to reset your password." />
-  <title>Recover Password | Notes Saver</title>
-  <meta property="og:title" content="Recover Password | Notes Saver" />
-  <meta property="og:description" content="Page to recover your password for Notes Saver. Follow simple steps to reset your password." />
-  <meta property="og:image" content="https://example.com/path-to-your-image.jpg" />
-  <meta property="og:url" content="https://noteswebapp-rust.vercel.app/recover-password" />
-  <meta property="og:type" content="website" />
-  <link rel="icon" type="image/png" href="https://example.com/path-to-your-favicon.ico" sizes="32x32" />
-</Helmet>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="Recover password, forgot password, Blog | codesaarthi" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://blog-app-alpha-livid.vercel.app/recover-password" />
+    <meta name="description" content="Page to recover your password for Blog | codesaarthi. Follow simple steps to reset your password and regain access to your account." />
+    <title>Recover Password | Blog | codesaarthi</title>
+    <meta property="og:title" content="Recover Password | Blog | codesaarthi" />
+    <meta property="og:description" content="Page to recover your password for Blog | codesaarthi. Follow simple steps to reset your password and regain access to your account." />
+    <meta property="og:image" content="https://blog-app-alpha-livid.vercel.app/android-chrome-512x512.png" />
+    <meta property="og:url" content="https://blog-app-alpha-livid.vercel.app/recover-password" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/png" href="https://blog-app-alpha-livid.vercel.app/favicon.ico" sizes="32x32" />
+  </Helmet>
 
       <div className=" min-h-screen bg-slate-400 dark:bg-gray-950 text-black dark:text-white flex justify-center items-center">
         <div className="mx-auto w-80">

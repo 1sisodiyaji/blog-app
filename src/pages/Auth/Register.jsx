@@ -223,7 +223,7 @@ const Register = () => {
       <Toaster />
       <Helmet>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Blog | codesaarthi - Explore engaging and insightful blogs on various topics including technology, lifestyle, and tutorials." />
+    <meta name="description" content="Blog | codesaarthi - Explore engaging and insightful blogs on a variety of topics including technology, lifestyle, and tutorials." />
     <meta name="keywords" content="blog, codesaarthi, technology, lifestyle, tutorials, articles, insights" />
     <meta name="author" content="Golu Singh" />
     <meta name="robots" content="index, follow" />
@@ -235,9 +235,9 @@ const Register = () => {
     />
     <meta
       property="og:image"
-      content="https://codesaarthi.com/img/logo.png"
+      content="https://blog-app-alpha-livid.vercel.app/android-chrome-512x512.png"
     />
-    <meta property="og:url" content="https://codesaarthi.com/blog" />
+    <meta property="og:url" content="https://blog-app-alpha-livid.vercel.app" />
     <meta property="og:type" content="website" />
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content="Blog | codesaarthi" />
@@ -247,12 +247,12 @@ const Register = () => {
     />
     <meta
       property="twitter:image"
-      content="https://codesaarthi.com/img/blog-default.jpg"
+      content="https://blog-app-alpha-livid.vercel.app/android-chrome-512x512.png"
     />
     <link
       rel="icon"
       type="image/png"
-      href="https://codesaarthi.com/img/favicon.ico"
+      href="https://blog-app-alpha-livid.vercel.app/favicon.ico"
       sizes="32x32"
     />
   </Helmet>

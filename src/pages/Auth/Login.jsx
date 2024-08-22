@@ -146,32 +146,41 @@ const Login = () => {
     <>
       <Toaster />
       <Helmet>
-  <title>Login - Codesaarthi</title>
-  <meta
-    name="description"
-    content="Login to Notes Saver to access and manage your saved notes efficiently."
-  />
-  <meta
-    name="keywords"
-    content="Notes Saver, Login, Sign In, Notes Management, Save Notes"
-  />
-  <meta name="author" content="Notes Saver Team" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Blog | codesaarthi</title>
+    <meta
+      name="description"
+      content="Login to Blog | codesaarthi to access and manage your blog posts and settings efficiently."
+    />
+    <meta
+      name="keywords"
+      content="Blog | codesaarthi, Login, Sign In, Blog Management, Access Blog Posts"
+    />
+    <meta name="author" content="Golu Singh" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  {/* Open Graph / Facebook */}
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Login - Notes Saver" />
-  <meta
-    property="og:description"
-    content="Login to Notes Saver to access and manage your saved notes efficiently."
-  />
-  <meta property="og:image" content="/logo.png" />
-  <meta
-    property="og:url"
-    content="https://noteswebapp-rust.vercel.app/login"
-  />
-  <meta property="og:site_name" content="Notes Saver" />
-</Helmet>
+    {/* Open Graph / Facebook */}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Login - Blog | codesaarthi" />
+    <meta
+      property="og:description"
+      content="Login to Blog | codesaarthi to access and manage your blog posts and settings efficiently."
+    />
+    <meta property="og:image" content="https://blog-app-alpha-livid.vercel.app/android-chrome-512x512.png" />
+    <meta
+      property="og:url"
+      content="https://blog-app-alpha-livid.vercel.app/login"
+    />
+    <meta property="og:site_name" content="Blog | codesaarthi" />
+    
+    {/* Twitter */}
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Login - Blog | codesaarthi" />
+    <meta
+      property="twitter:description"
+      content="Login to Blog | codesaarthi to access and manage your blog posts and settings efficiently."
+    />
+    <meta property="twitter:image" content="https://blog-app-alpha-livid.vercel.app/android-chrome-512x512.png" />
+  </Helmet>
 
       <div className="min-h-screen bg-slate-400 dark:bg-gray-950 flex justify-between items-center">
           <div className="flex justify-center  items-center  pb-12 flex-1"> 

@@ -6,6 +6,10 @@ import TruncateText from '../../helpers/TruncateText';
 import FormattedDate from '../../helpers/FormateDate';
 import Share from '../../helpers/Share';
 import {Toaster} from "react-hot-toast";
+import { Helmet } from 'react-helmet';
+
+
+
 const Home = () => {
   const [Blogs, setBlogs] = useState([]);
   useEffect(() => {
@@ -56,6 +60,24 @@ const Home = () => {
   return (
     <>
     <Toaster/>
+    <Helmet>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="Blog, codesaarthi, technology, lifestyle, tutorials, articles" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://blog-app-alpha-livid.vercel.app/" />
+    <meta name="description" content="Welcome to Blog | codesaarthi, your go-to source for insightful blogs on technology, lifestyle, tutorials, and more. Explore and stay updated with our latest articles." />
+    <title>Home | Blog | codesaarthi</title>
+    <meta property="og:title" content="Home | Blog | codesaarthi" />
+    <meta property="og:description" content="Welcome to Blog | codesaarthi, your go-to source for insightful blogs on technology, lifestyle, tutorials, and more. Explore and stay updated with our latest articles." />
+    <meta property="og:image" content="https://blog-app-alpha-livid.vercel.app/android-chrome-512x512.png" />
+    <meta property="og:url" content="https://blog-app-alpha-livid.vercel.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Home | Blog | codesaarthi" />
+    <meta property="twitter:description" content="Welcome to Blog | codesaarthi, your go-to source for insightful blogs on technology, lifestyle, tutorials, and more. Explore and stay updated with our latest articles." />
+    <meta property="twitter:image" content="https://blog-app-alpha-livid.vercel.app/android-chrome-512x512.png" />
+    <link rel="icon" type="image/png" href="https://blog-app-alpha-livid.vercel.app/favicon.ico" sizes="32x32" />
+  </Helmet>
   <div className='bg-slate-400 dark:bg-gray-950 text-black dark:text-white min-h-screen'>
   <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 p-4">
     {Blogs.length > 0 ? (

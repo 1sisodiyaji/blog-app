@@ -4,6 +4,7 @@ import axios from 'axios';
 import config from '../../helpers/config';
 import FormattedDate from '../../helpers/FormateDate';
 import Share from '../../helpers/Share';
+import { Helmet } from 'react-helmet';
 
 const SingleBlog = () => {
   const { slug } = useParams(); 
@@ -32,7 +33,30 @@ const SingleBlog = () => {
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
   return (
-    <>
+    <> 
+      {blog && (
+        <Helmet>
+          <title>{blog.title} | Blog | codesaarthi</title>
+          <meta name="description" content={blog.description} />
+          <meta name="keywords" content={`${blog.tags ? blog.tags.join(', ') : 'blog, codesaarthi'}`} />
+          <meta name="robots" content="index, follow" />
+          <link rel="canonical" href={`https://blog-app-alpha-livid.vercel.app/blog/${blog.slug}`} />
+          
+          {/* Open Graph / Facebook */}
+          <meta property="og:title" content={`${blog.title} | Blog | codesaarthi`} />
+          <meta property="og:description" content={blog.description} />
+          <meta property="og:image" content={blog.image || 'https://blog-app-alpha-livid.vercel.app/img/default-image.jpg'} />
+          <meta property="og:url" content={`https://blog-app-alpha-livid.vercel.app/blog/${blog.slug}`} />
+          <meta property="og:type" content="article" />
+          
+          {/* Twitter */}
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta property="twitter:title" content={`${blog.title} | Blog | codesaarthi`} />
+          <meta property="twitter:description" content={blog.description} />
+          <meta property="twitter:image" content={blog.image || 'https://blog-app-alpha-livid.vercel.app/img/default-image.jpg'} />
+        </Helmet>
+      )}
+      
     <div className='bg-slate-400 dark:bg-gray-950 text-black dark:text-white min-h-screen'>
     <div className="max-w-4xl mx-auto px-4 py-8  ">
       {blog ? (
